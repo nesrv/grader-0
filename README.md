@@ -84,19 +84,20 @@ class Profession(Base):
 добавь CRUD эндпоинты для работы с профессией
 
 
-создай api/v1/graders c файлами handlers, models, schemas, service
 
 ```py
-class Grades(Base):
-    __tablename__ = "grades"
-    grade_id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True, nullable=False)
-    level = Column(Enum(GradeLevel), nullable=False, default=GradeLevel.JUNIOR)
-    description = Column(Text, nullable=True)
-    requirements = Column(Text, nullable=True)
-    
-    # Relations
-    profession_id = Column(Integer, ForeignKey("profession.id"), nullable=False)
-    profession = relationship("Profession", back_populates="grades")
-    
+
+app.include_router(
+    user_router,
+    prefix="/users",
+    tags=["Пользователи"],
+    dependencies=[Depends(...)],
+)
+
+app.include_router(
+    profession_router,
+    prefix="/proffesions",
+    tags=["Специальности"],
+    dependencies=[Depends(...)],
+)
 ```
