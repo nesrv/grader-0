@@ -1,0 +1,178 @@
+/* Основные стили */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-dark);
+  background-color: var(--color-white);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-medium);
+}
+
+/* Шапка сайта */
+header {
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-small);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: var(--spacing-medium) 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  height: 40px;
+  margin-right: var(--spacing-small);
+}
+
+header .logo a {
+  color: var(--color-dark);
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+header nav ul li {
+  margin-left: var(--spacing-large);
+}
+
+header nav ul li a {
+  color: var(--color-dark);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+  padding: var(--spacing-small) 0;
+  position: relative;
+}
+
+header nav ul li a:hover {
+  color: var(--color-accent);
+}
+
+header nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.3s;
+}
+
+header nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Основное содержимое */
+main {
+  padding-top: 80px;
+  min-height: calc(100vh - 80px);
+}
+
+/* Героический блок */
+.hero {
+  background-color: var(--color-very-light-gray);
+  padding: var(--spacing-xxl) 0;
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.hero-logo {
+  margin-bottom: var(--spacing-large);
+}
+
+.hero-logo .main-logo {
+  height: 120px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: var(--spacing-medium);
+  color: var(--color-dark);
+}
+
+.hero p {
+  font-size: 20px;
+  color: var(--color-medium-gray);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Подвал */
+footer {
+  background-color: var(--color-very-light-gray);
+  color: var(--color-medium-gray);
+  padding: var(--spacing-large) 0;
+  text-align: center;
+  margin-top: var(--spacing-large);
+}
+
+/* Заглушки */
+.placeholder {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-large);
+  text-align: center;
+  margin: var(--spacing-large) auto;
+  max-width: 800px;
+  box-shadow: var(--shadow-medium);
+}
+
+.placeholder h2 {
+  color: var(--color-dark-gray);
+  margin-bottom: var(--spacing-medium);
+}
+
+.placeholder p {
+  color: var(--color-medium-gray);
+}
+
+/* Состояния загрузки и ошибки */
+.loading, .error {
+  text-align: center;
+  padding: var(--spacing-large);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-large) auto;
+  max-width: 600px;
+  box-shadow: var(--shadow-small);
+}
+
+.loading {
+  color: var(--color-medium-gray);
+}
+
+.error {
+  color: var(--color-dark);
+  background-color: #ffeeee;
+}

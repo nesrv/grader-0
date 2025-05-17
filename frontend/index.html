@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Грейдер - Главная</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/profession-cards.css">
+  <link rel="stylesheet" href="css/rating.css">
+</head>
+<body>
+  <header id="header"></header>
+  
+  <main>
+    <section class="hero">
+      <div class="hero-logo">
+        <img src="/images/logo_grader.png" alt="Грейдер" class="main-logo">
+      </div>
+      <h1>Карьерный грейдер Python-разработчика</h1>
+      <p>Выберите интересующую вас специализацию</p>
+    </section>
+    
+    <section class="professions" id="professions-container">
+      <!-- Сюда будут добавляться карточки профессий из JS -->
+    </section>
+  </main>
+  
+  <footer id="footer"></footer>
+  
+  <script src="js/api.js"></script>
+  <script src="js/components/header.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/components/gradeCard.js"></script>
+  <script src="js/pages/home.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+:root {
+  /* Цветовая схема (черно-белая) */
+  --color-black: #000000;
+  --color-dark: #1a1a1a;
+  --color-dark-gray: #333333;
+  --color-medium-gray: #666666;
+  --color-light-gray: #cccccc;
+  --color-very-light-gray: #f2f2f2;
+  --color-white: #ffffff;
+  
+  /* Акцентный цвет (серый) */
+  --color-accent: #4d4d4d;
+  --color-accent-hover: #666666;
+  
+  /* Шрифты */
+  --font-primary: 'Nunito', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
+  
+  /* Размеры */
+  --container-width: 1200px;
+  --border-radius: 16px;
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  
+  /* Тени */
+  --shadow-small: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 8px 16px rgba(0, 0, 0, 0.1);
+}

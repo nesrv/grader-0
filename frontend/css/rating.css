@@ -1,0 +1,27 @@
+.rating {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.star {
+  color: #ddd;
+  font-size: 24px;
+  margin-right: 2px;
+}
+
+.filled {
+  color: #555;
+}
+
+.profession-card {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.profession-card:hover {
+  text-decoration: none;
+  color: inherit;
+}

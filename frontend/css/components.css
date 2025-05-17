@@ -1,0 +1,189 @@
+/* Стили компонентов */
+
+/* Карточки профессий */
+.professions-section {
+  padding: var(--spacing-xl) 0;
+}
+
+.professions-section h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: var(--spacing-xl);
+  font-weight: 800;
+}
+
+.professions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-large);
+  padding: 0 var(--spacing-medium);
+}
+
+.profession-card {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: var(--spacing-large);
+  border: 2px solid var(--color-very-light-gray);
+}
+
+.profession-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-large);
+  border-color: var(--color-light-gray);
+}
+
+.profession-image {
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+}
+
+.profession-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profession-info {
+  padding: var(--spacing-large);
+}
+
+.profession-info h3 {
+  margin-bottom: var(--spacing-medium);
+  color: var(--color-dark);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.profession-info p {
+  color: var(--color-medium-gray);
+  margin-bottom: var(--spacing-large);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.show-grades-btn {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 16px;
+  width: 100%;
+}
+
+.show-grades-btn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.show-grades-btn:disabled {
+  background-color: var(--color-light-gray);
+  cursor: not-allowed;
+}
+
+/* Карточки грейдов */
+.grades-container {
+  padding: var(--spacing-large);
+  border-top: 2px solid var(--color-very-light-gray);
+  margin-top: var(--spacing-medium);
+}
+
+.grades-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-medium);
+  color: var(--color-dark);
+}
+
+.grade-card {
+  background-color: var(--color-very-light-gray);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-medium);
+  margin-bottom: var(--spacing-medium);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.grade-card:hover {
+  transform: translateX(5px);
+}
+
+.grade-card:last-child {
+  margin-bottom: 0;
+}
+
+.grade-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-medium);
+  color: var(--color-white);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.grade-content {
+  flex-grow: 1;
+}
+
+.grade-header {
+  margin-bottom: var(--spacing-small);
+}
+
+.grade-header h4 {
+  color: var(--color-dark);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.grade-description p {
+  color: var(--color-medium-gray);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Кнопка "Начать обучение" */
+.cta-section {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+  background-color: var(--color-very-light-gray);
+  margin: var(--spacing-xxl) 0;
+}
+
+.cta-section h2 {
+  font-size: 32px;
+  margin-bottom: var(--spacing-large);
+  font-weight: 800;
+}
+
+.cta-button {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  padding: 16px 32px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 18px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background-color: var(--color-accent-hover);
+  transform: scale(1.05);
+}

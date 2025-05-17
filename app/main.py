@@ -37,13 +37,6 @@ app.include_router(api_v1_router)
 app.mount("/css", StaticFiles(directory="frontend/css"), name="css")
 app.mount("/js", StaticFiles(directory="frontend/js"), name="js")
 app.mount("/assets", StaticFiles(directory="frontend/assets"), name="assets")
-app.mount("/images", StaticFiles(directory="frontend/assets/images"), name="images")
-app.mount("/professions", StaticFiles(directory="frontend/assets/images/professions"), name="professions_images")
-
-# Добавляем маршрут для profession.html
-@app.get("/profession.html", response_class=HTMLResponse)
-async def read_profession(request: Request):
-    return templates.TemplateResponse("profession.html", {"request": request})
 
 # Создаем шаблоны
 templates = Jinja2Templates(directory="frontend")
