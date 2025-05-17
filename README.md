@@ -46,7 +46,7 @@ uvicorn main:app --reload
 ├── main.py
 ├── README.md
 ├── requirements.txt
-└── users.sqlite
+└── grader.sqlite
 ```
 
 ## Использование
@@ -66,6 +66,37 @@ uvicorn main:app --reload
 - `PUT /api/v1/users/me` - Обновление данных текущего пользователя (защищенный эндпоинт)
 - `GET /api/v1/users` - Получение списка всех пользователей (защищенный эндпоинт)
 - `POST /api/v1/users` - Создание нового пользователя (публичный эндпоинт)
+- `GET /api/v1/users/{user_id}` - Получение информации о пользователе по ID (защищенный эндпоинт)
 
-POST /api/v1/users/ Create User
-GET /api/v1/users/{user_id} Read User By Id
+создай api/v1/profession c файлами handlers, models, schemas, service
+
+создай таблицу  в бд users.sqlite для этого app 
+
+```py
+class Profession(Base):
+    __tablename__ = "professions"
+    profession_id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True, nullable=False)
+    description = Column(Text, nullable=True)
+    image_path = Column(String, nullable=True)
+```
+
+добавь CRUD эндпоинты для работы с профессией
+
+
+создай api/v1/graders c файлами handlers, models, schemas, service
+
+```py
+class Grades(Base):
+    __tablename__ = "grades"
+    grade_id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True, nullable=False)
+    level = Column(Enum(GradeLevel), nullable=False, default=GradeLevel.JUNIOR)
+    description = Column(Text, nullable=True)
+    requirements = Column(Text, nullable=True)
+    
+    # Relations
+    profession_id = Column(Integer, ForeignKey("profession.id"), nullable=False)
+    profession = relationship("Profession", back_populates="grades")
+    
+```

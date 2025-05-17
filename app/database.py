@@ -1,8 +1,8 @@
-from sqlalchemy import create_engine, Column, Integer, String, Boolean
+from sqlalchemy import create_engine, Column, Integer, String, Boolean, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./users.sqlite"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./grader.sqlite"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
@@ -20,6 +20,14 @@ class UserDB(Base):
     full_name = Column(String)
     hashed_password = Column(String)
     disabled = Column(Boolean, default=False)
+
+# Define Profession model here to ensure it's created with Base.metadata.create_all
+class Profession(Base):
+    __tablename__ = "professions"
+    profession_id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True, nullable=False)
+    description = Column(Text, nullable=True)
+    image_path = Column(String, nullable=True)
 
 # Создаем таблицы
 Base.metadata.create_all(bind=engine)

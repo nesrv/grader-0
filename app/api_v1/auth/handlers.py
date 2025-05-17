@@ -112,6 +112,22 @@ async def read_users(
         ) for user in users
     ]
 
+async def read_user_by_id(
+    user_id: int,
+    current_user: User = Depends(get_current_active_user),
+    db: Session = Depends(get_db)
+):
+    user = db.query(UserDB).filter(UserDB.id == user_id).first()
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    return User(
+        username=user.username,
+        email=user.email,
+        full_name=user.full_name,
+        disabled=user.disabled
+    )
+
 async def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db_user = db.query(UserDB).filter(UserDB.username == user.username).first()
     if db_user:

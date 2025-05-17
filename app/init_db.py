@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 
-from app.database import SessionLocal, UserDB
+from app.database import SessionLocal, UserDB, Profession
 
 # Фейковые данные пользователей
 fake_users_db = {
@@ -13,6 +13,25 @@ fake_users_db = {
         "disabled": False,
     }
 }
+
+# Фейковые данные профессий
+fake_professions = [
+    {
+        "name": "Программист",
+        "description": "Специалист по разработке программного обеспечения",
+        "image_path": "/images/programmer.jpg"
+    },
+    {
+        "name": "Дизайнер",
+        "description": "Специалист по созданию визуальных концепций",
+        "image_path": "/images/designer.jpg"
+    },
+    {
+        "name": "Аналитик данных",
+        "description": "Специалист по анализу и интерпретации данных",
+        "image_path": "/images/data_analyst.jpg"
+    }
+]
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -35,9 +54,16 @@ def init_db():
                 disabled=user_data["disabled"]
             )
             db.add(db_user)
-        
-        db.commit()
     
+    # Проверяем, есть ли уже профессии в базе
+    profession_count = db.query(Profession).count()
+    if profession_count == 0:
+        # Добавляем тестовые профессии
+        for profession_data in fake_professions:
+            db_profession = Profession(**profession_data)
+            db.add(db_profession)
+    
+    db.commit()
     db.close()
 
 if __name__ == "__main__":
