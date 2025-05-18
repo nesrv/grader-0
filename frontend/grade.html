@@ -3,26 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Грейдер - Профессия</title>
+  <title>Грейдер - Модули грейда</title>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/profession-cards.css">
   <link rel="stylesheet" href="css/rating.css">
   <link rel="stylesheet" href="css/grades.css">
+  <link rel="stylesheet" href="css/modules.css">
+  <link rel="stylesheet" href="css/grade-page.css">
 </head>
 <body>
   <header id="header"></header>
   
   <main>
     <section class="hero">
-      <h1 id="profession-title">Грейды профессии</h1>
-      <p id="profession-description"></p>
+      <h1 id="grade-title">Модули грейда</h1>
+      <p id="grade-description"></p>
     </section>
     
-    <section class="grades" id="grades-container">
-      <!-- Сюда будут добавляться карточки грейдов из JS -->
-    </section>
+    <div class="modules-container">
+      <section class="modules" id="modules-container">
+        <!-- Сюда будут добавляться карточки модулей из JS -->
+      </section>
+    </div>
   </main>
   
   <footer id="footer"></footer>
@@ -30,7 +34,7 @@
   <script src="js/api.js"></script>
   <script src="js/components/header.js"></script>
   <script src="js/components/footer.js"></script>
-  <script src="js/pages/profession.js"></script>
+  <script src="js/pages/grade.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

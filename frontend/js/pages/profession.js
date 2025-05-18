@@ -72,7 +72,22 @@ async function initProfessionPage() {
         </div>
       `;
       
+      // Добавляем обработчик клика для перехода на страницу грейда
+      gradeCard.addEventListener('click', function() {
+        console.log(`Переход на grade.html?id=${grade.grade_id}`);
+        window.location.href = `grade.html?id=${grade.grade_id}`;
+      });
+      
       gradesContainer.appendChild(gradeCard);
+    });
+    
+    // Добавляем обработчики клика для всех карточек грейдов
+    document.querySelectorAll('.profession-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const gradeId = this.dataset.id;
+        console.log(`Клик по карточке грейда ${gradeId}`);
+        window.location.href = `grade.html?id=${gradeId}`;
+      });
     });
     
   } catch (error) {

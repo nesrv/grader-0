@@ -1,0 +1,153 @@
+.modules {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.modules-path {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.modules-path::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-color: #e0e0e0;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.module-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.module-card.completed {
+  border: 2px solid #aaaaaa;
+}
+
+.module-card.current {
+  border: 2px solid #666666;
+}
+
+.module-card.locked {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.module-icon {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.module-icon.completed {
+  background-color: #aaaaaa;
+  color: white;
+}
+
+.module-icon.current {
+  background-color: #666666;
+  color: white;
+}
+
+.module-icon.locked {
+  background-color: #dddddd;
+  color: #999;
+}
+
+.module-content {
+  padding: 50px 20px 20px;
+  text-align: center;
+}
+
+.module-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.module-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.module-status {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.module-status.completed {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.module-status.current {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.module-status.locked {
+  background-color: #f0f0f0;
+  color: #999;
+}
+
+.module-footer {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.module-order {
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0 auto;
+}

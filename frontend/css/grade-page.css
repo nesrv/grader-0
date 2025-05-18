@@ -1,0 +1,44 @@
+.modules-container {
+  background-color: #f5f5f5;
+  padding: 40px 0;
+  min-height: 600px;
+}
+
+.hero {
+  background-color: #e0e0e0;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 16px;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.loading {
+  color: #666;
+}
+
+.error {
+  color: #666;
+  background-color: #f8f8f8;
+  border-left: 4px solid #999;
+}

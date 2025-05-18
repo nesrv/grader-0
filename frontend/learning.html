@@ -7,22 +7,37 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/learning.css">
 </head>
 <body>
   <header id="header"></header>
   
   <main>
-    <section class="hero">
-      <h1>Обучение</h1>
-      <p>Здесь будут доступны учебные материалы</p>
-    </section>
-    
-    <section class="learning-content">
-      <div class="placeholder">
-        <h2>Раздел находится в разработке</h2>
-        <p>Скоро здесь появятся учебные материалы по различным уровням и модулям</p>
-      </div>
-    </section>
+    <div class="learning-container">
+      <section class="learning-header">
+        <h1 id="module-title">Название модуля</h1>
+        <p id="module-description">Описание модуля</p>
+      </section>
+      
+      <section class="learning-progress">
+        <div class="progress-title">
+          <h2>Общий прогресс модуля</h2>
+          <div class="progress-percentage" id="total-progress">0%</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+        </div>
+      </section>
+      
+      <section class="topics-list" id="topics-container">
+        <!-- Сюда будут добавляться карточки тем из JS -->
+      </section>
+      
+      <section class="module-navigation">
+        <button class="nav-button" id="prev-module">Предыдущий модуль</button>
+        <button class="nav-button next" id="next-module">Следующий модуль</button>
+      </section>
+    </div>
   </main>
   
   <footer id="footer"></footer>

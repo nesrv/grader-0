@@ -12,6 +12,10 @@ class TopicCreate(TopicBase):
     pass
 
 
+class TopicUpdate(TopicBase):
+    pass
+
+
 class Topic(TopicBase):
     topic_id: int
     module_id: int
@@ -27,6 +31,10 @@ class ModuleBase(BaseModel):
 
 
 class ModuleCreate(ModuleBase):
+    pass
+
+
+class ModuleUpdate(ModuleBase):
     pass
 
 

@@ -44,3 +44,25 @@ async function getGradesByProfession(professionId) {
     return [];
   }
 }
+
+// Получение грейда по ID
+async function getGradeById(gradeId) {
+  try {
+    const response = await fetch(`${API_URL}/grades/${gradeId}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`Ошибка при получении грейда ${gradeId}:`, error);
+    return null;
+  }
+}
+
+// Получение модулей для грейда
+async function getModulesByGrade(gradeId) {
+  try {
+    const response = await fetch(`${API_URL}/modules/grade/${gradeId}/modules`);
+    return await response.json();
+  } catch (error) {
+    console.error(`Ошибка при получении модулей для грейда ${gradeId}:`, error);
+    return [];
+  }
+}

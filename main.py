@@ -45,6 +45,11 @@ app.mount("/professions", StaticFiles(directory="frontend/assets/images/professi
 async def read_profession(request: Request):
     return templates.TemplateResponse("profession.html", {"request": request})
 
+# Добавляем маршрут для grade.html
+@app.get("/grade.html", response_class=HTMLResponse)
+async def read_grade(request: Request):
+    return templates.TemplateResponse("grade.html", {"request": request})
+
 # Создаем шаблоны
 templates = Jinja2Templates(directory="frontend")
 
@@ -54,6 +59,10 @@ async def read_index(request: Request):
 
 @app.get("/learning", response_class=HTMLResponse)
 async def read_learning(request: Request):
+    return templates.TemplateResponse("learning.html", {"request": request})
+
+@app.get("/learning.html", response_class=HTMLResponse)
+async def read_learning_html(request: Request):
     return templates.TemplateResponse("learning.html", {"request": request})
 
 @app.get("/profile", response_class=HTMLResponse)
