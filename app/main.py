@@ -5,10 +5,10 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 
 from app.api_v1.routes import router as api_v1_router
-from app.init_db import init_db
+# from app.init_db import init_db
 
 # Инициализация базы данных
-init_db()
+# init_db()
 
 # Настройка CORS
 origins = [

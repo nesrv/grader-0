@@ -1,9 +1,9 @@
 import os
 import sqlite3
-from app.init_db import init_db
+# from app.init_db import init_db
 
 # Инициализируем базу данных заново
-init_db()
+# init_db()
 print("База данных обновлена.")
 
 # Проверяем содержимое таблицы профессий

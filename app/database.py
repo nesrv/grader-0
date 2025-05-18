@@ -31,6 +31,13 @@ class GradeLevel(enum.Enum):
     JUNIOR_PLUS = "junior+"
     MIDDLE = "middle"
     SENIOR = "senior"
+   
+    # STAGER = "стажер"
+    # JUNIOR = "джун"
+    # JUNIOR_PLUS = "джун+"
+    # MIDDLE = "мидл"
+    # SENIOR = "сениор"
+    
 
 # Define Profession model here to ensure it's created with Base.metadata.create_all
 class Profession(Base):
@@ -52,6 +59,38 @@ class Grade(Base):
     # Relations
     profession_id = Column(Integer, ForeignKey("professions.profession_id"), nullable=False)
     profession = relationship("Profession", back_populates="grades")
+    
+    # One-to-many relationship with modules
+    modules = relationship("Module", back_populates="grade", cascade="all, delete-orphan")
+
+# Module model
+class Module(Base):
+    __tablename__ = "modules"
+    
+    module_id = Column(Integer, primary_key=True, index=True)
+    title = Column(String(255), nullable=False)
+    description = Column(Text, nullable=True)
+    order = Column(Integer, nullable=False, default=1)
+    
+    # Relations
+    grade_id = Column(Integer, ForeignKey("grades.grade_id"), nullable=False)
+    grade = relationship("Grade", back_populates="modules")
+    
+    # One-to-many relationship with topics
+    topics = relationship("Topic", back_populates="module", cascade="all, delete-orphan")
+
+# Topic model
+class Topic(Base):
+    __tablename__ = "topics"
+    
+    topic_id = Column(Integer, primary_key=True, index=True)
+    title = Column(String(255), nullable=False)
+    description = Column(Text, nullable=True)
+    order = Column(Integer, nullable=False, default=1)
+    
+    # Relations
+    module_id = Column(Integer, ForeignKey("modules.module_id"), nullable=False)
+    module = relationship("Module", back_populates="topics")
 
 # Создаем таблицы
 Base.metadata.create_all(bind=engine)

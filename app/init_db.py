@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 
-from app.database import SessionLocal, UserDB, Profession, Grade, GradeLevel
+from app.database import SessionLocal, UserDB, Profession, Grade, GradeLevel, Module, Topic
+from app.init_modules_data import init_modules_data
 
 # Фейковые данные пользователей
 fake_users_db = {
@@ -140,6 +141,14 @@ def init_db():
         db.add(db_grade)
     
     db.commit()
+    
+    # Удаляем все существующие модули и темы
+    db.query(Topic).delete()
+    db.query(Module).delete()
+    
+    # Инициализируем модули и темы
+    init_modules_data(db)
+    
     db.close()
 
 if __name__ == "__main__":
