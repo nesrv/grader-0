@@ -33,7 +33,7 @@ async function initProfessionPage() {
   
   try {
     // Получаем данные о профессии
-    const profession = await getProfessionById(professionId);
+    const profession = await fetchProfession(professionId);
     
     if (!profession) {
       gradesContainer.innerHTML = '<div class="error">Профессия не найдена</div>';
@@ -45,7 +45,7 @@ async function initProfessionPage() {
     professionDescription.textContent = profession.description;
     
     // Получаем грейды для профессии
-    const grades = await getGradesByProfession(professionId);
+    const grades = await fetchGrades(professionId);
     
     // Очищаем контейнер
     gradesContainer.innerHTML = '';
@@ -75,19 +75,10 @@ async function initProfessionPage() {
       // Добавляем обработчик клика для перехода на страницу грейда
       gradeCard.addEventListener('click', function() {
         console.log(`Переход на grade.html?id=${grade.grade_id}`);
-        window.location.href = `grade.html?id=${grade.grade_id}`;
+        window.location.href = `grade.html?id=${grade.grade_id}&profession_id=${professionId}`;
       });
       
       gradesContainer.appendChild(gradeCard);
-    });
-    
-    // Добавляем обработчики клика для всех карточек грейдов
-    document.querySelectorAll('.profession-card').forEach(card => {
-      card.addEventListener('click', function() {
-        const gradeId = this.dataset.id;
-        console.log(`Клик по карточке грейда ${gradeId}`);
-        window.location.href = `grade.html?id=${gradeId}`;
-      });
     });
     
   } catch (error) {

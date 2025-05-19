@@ -11,8 +11,10 @@ async function initGradePage() {
   // Получаем ID грейда из URL
   const urlParams = new URLSearchParams(window.location.search);
   const gradeId = urlParams.get('id');
+  const professionId = urlParams.get('profession_id');
   
   console.log('ID грейда из URL:', gradeId);
+  console.log('ID профессии из URL:', professionId);
   
   if (!gradeId) {
     modulesContainer.innerHTML = '<div class="error">Не указан ID грейда</div>';
@@ -22,7 +24,7 @@ async function initGradePage() {
   try {
     // Получаем данные о грейде
     console.log('Запрос данных о грейде:', gradeId);
-    const grade = await getGradeById(gradeId);
+    const grade = await fetchGrade(gradeId);
     console.log('Получены данные о грейде:', grade);
     
     if (!grade) {
@@ -36,7 +38,7 @@ async function initGradePage() {
     
     // Получаем модули для грейда
     console.log('Запрос модулей для грейда:', gradeId);
-    const modules = await getModulesByGrade(gradeId);
+    const modules = await fetchModules(gradeId);
     console.log('Получены модули:', modules);
     
     // Очищаем контейнер
@@ -90,7 +92,7 @@ async function initGradePage() {
         moduleCard.addEventListener('click', () => {
           if (status === 'current') {
             // Переход на страницу обучения для текущего модуля
-            window.location.href = `learning.html?module_id=${module.module_id}`;
+            window.location.href = `learning.html?id=${module.module_id}&grade_id=${gradeId}&profession_id=${professionId}`;
           } else {
             // Для завершенных модулей просто показываем сообщение
             alert(`Модуль "${module.title}" уже завершен`);

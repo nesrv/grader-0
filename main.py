@@ -50,6 +50,11 @@ async def read_profession(request: Request):
 async def read_grade(request: Request):
     return templates.TemplateResponse("grade.html", {"request": request})
 
+# Добавляем маршрут для questions.html
+@app.get("/questions.html", response_class=HTMLResponse)
+async def read_questions(request: Request):
+    return templates.TemplateResponse("questions.html", {"request": request})
+
 # Создаем шаблоны
 templates = Jinja2Templates(directory="frontend")
 

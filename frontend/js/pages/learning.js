@@ -14,9 +14,13 @@ async function initLearningPage() {
   
   // Получаем ID модуля из URL
   const urlParams = new URLSearchParams(window.location.search);
-  const moduleId = urlParams.get('module_id');
+  const moduleId = urlParams.get('module_id') || urlParams.get('id');
   
   console.log('ID модуля из URL:', moduleId);
+  
+  // Получаем дополнительные параметры из URL
+  const gradeId = urlParams.get('grade_id');
+  const professionId = urlParams.get('profession_id');
   
   if (!moduleId) {
     topicsContainer.innerHTML = '<div class="error">Не указан ID модуля</div>';
@@ -119,7 +123,8 @@ async function initLearningPage() {
       // Добавляем обработчик клика только для доступных тем
       if (topic.status !== 'locked') {
         topicCard.addEventListener('click', () => {
-          alert(`Переход к теме: ${topic.title}`);
+          // Переход на страницу с теоретическими вопросами
+          window.location.href = `questions.html?topic_id=${topic.topic_id}&module_id=${moduleId}${gradeId ? `&grade_id=${gradeId}` : ''}${professionId ? `&profession_id=${professionId}` : ''}`;
         });
       }
       
