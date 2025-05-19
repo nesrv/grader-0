@@ -15,10 +15,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupBreadcrumbs(professionId, gradeId, moduleId);
     
     try {
-        // Загружаем информацию о теме
+        // Загружаем информацию о теме, модуле и грейде
         const topic = await fetchTopic(topicId);
         document.getElementById('topic-title').textContent = topic.title;
+        document.getElementById('topic-name').textContent = topic.title;
         document.getElementById('page-title').textContent = `Теоретические вопросы: ${topic.title}`;
+        
+        // Загружаем информацию о модуле
+        if (moduleId) {
+            const module = await fetchModule(moduleId);
+            document.getElementById('module-name').textContent = module.title;
+        }
+        
+        // Загружаем информацию о грейде
+        if (gradeId) {
+            const grade = await fetchGrade(gradeId);
+            document.getElementById('grade-name').textContent = grade.level_name;
+        }
         
         // Загружаем теоретические вопросы для темы
         const theories = await fetchTheories(topicId);
@@ -38,6 +51,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function fetchTopic(topicId) {
     const response = await fetch(`/api/v1/topics/topics/${topicId}`);
+    if (!response.ok) {
+        throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+    return await response.json();
+}
+
+async function fetchModule(moduleId) {
+    const response = await fetch(`/api/v1/modules/${moduleId}`);
+    if (!response.ok) {
+        throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+    return await response.json();
+}
+
+async function fetchGrade(gradeId) {
+    const response = await fetch(`/api/v1/grades/${gradeId}`);
     if (!response.ok) {
         throw new Error(`Ошибка HTTP: ${response.status}`);
     }
@@ -79,12 +108,22 @@ function renderTheories(theories) {
         if (theory.code_question) {
             const codeBlock = document.createElement('pre');
             codeBlock.className = 'code-block';
-            codeBlock.textContent = theory.code_question;
+            
+            const codeElement = document.createElement('code');
+            codeElement.className = 'language-python';
+            codeElement.textContent = theory.code_question;
+            
+            codeBlock.appendChild(codeElement);
             theoryCard.appendChild(codeBlock);
         }
         
         container.appendChild(theoryCard);
     });
+    
+    // Подсветка синтаксиса после добавления всех элементов в DOM
+    if (window.Prism) {
+        Prism.highlightAll();
+    }
 }
 
 function updateProgress(theories) {

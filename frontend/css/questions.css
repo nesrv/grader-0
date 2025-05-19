@@ -23,13 +23,23 @@
 }
 
 .code-block {
-    background-color: #2d2d2d;
-    color: #f8f8f8;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Дополнительные стили для Prism */
+pre[class*="language-"] {
+    margin: 0;
     padding: 1rem;
     border-radius: 4px;
-    font-family: monospace;
+}
+
+code[class*="language-"] {
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
     white-space: pre-wrap;
-    margin-bottom: 1rem;
 }
 
 .navigation-buttons {
@@ -68,4 +78,46 @@
     text-align: center;
     padding: 2rem;
     color: #666;
+}
+
+.error-message {
+    color: #e74c3c;
+    text-align: center;
+    padding: 1rem;
+    background-color: #fdf3f2;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.no-data {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Стили для блока с информацией о пути */
+.path-info {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.path-item {
+    flex: 1;
+    min-width: 200px;
+}
+
+.path-label {
+    font-weight: bold;
+    color: #555;
+    margin-right: 0.5rem;
+}
+
+#grade-name, #module-name, #topic-name {
+    color: #333;
 }
