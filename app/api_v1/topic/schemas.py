@@ -4,7 +4,8 @@ from pydantic import BaseModel
 
 class TheoryBase(BaseModel):
     title: str
-    answer_type: str
+    description: Optional[str] = None
+    code_question: Optional[str] = None
     is_active: bool = True
 
 
@@ -12,66 +13,36 @@ class TheoryCreate(TheoryBase):
     topic_id: int
 
 
+class TheoryUpdate(TheoryBase):
+    pass
+
+
 class Theory(TheoryBase):
     theory_id: int
     topic_id: int
-    
+
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 
-class QuestionBase(BaseModel):
+class TopicBase(BaseModel):
     title: str
-    options: List[str]
-    correct_answers: List[int]
-    is_active: bool = True
+    description: Optional[str] = None
+    order: int = 1
 
 
-class QuestionCreate(QuestionBase):
+class TopicCreate(TopicBase):
+    module_id: int
+
+
+class TopicUpdate(TopicBase):
+    pass
+
+
+class Topic(TopicBase):
     topic_id: int
+    module_id: int
+    theories: List[Theory] = []
 
-
-class Question(QuestionBase):
-    question_id: int
-    topic_id: int
-    
     class Config:
-        from_attributes = True
-
-
-class TaskBase(BaseModel):
-    title: str
-    code_question: str
-    correct_answer: str
-    is_active: bool = True
-
-
-class TaskCreate(TaskBase):
-    topic_id: int
-
-
-class Task(TaskBase):
-    task_id: int
-    topic_id: int
-    
-    class Config:
-        from_attributes = True
-
-
-class CaseBase(BaseModel):
-    title: str
-    code_template: str
-    correct_fields: List[str]
-    is_active: bool = True
-
-
-class CaseCreate(CaseBase):
-    topic_id: int
-
-
-class Case(CaseBase):
-    case_id: int
-    topic_id: int
-    
-    class Config:
-        from_attributes = True
+        orm_mode = True

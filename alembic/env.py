@@ -8,7 +8,7 @@ from alembic import context
 # Импорт моделей для автогенерации миграций
 from app.database import Base
 from app.api_v1.profession.models import Profession
-from app.api_v1.grade.models import Grades
+from app.api_v1.grade.models import Grade
 from app.api_v1.module.models import Module
 from app.api_v1.topic.models import Topic
 

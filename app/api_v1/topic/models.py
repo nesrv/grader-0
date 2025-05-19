@@ -9,7 +9,9 @@ class Theory(Base):
     
     theory_id = Column(Integer, primary_key=True, index=True)
     title = Column(String(255), nullable=False)
-    answer_type = Column(Enum("understand", "not_understand", name="answer_type_enum"), nullable=False)
+    description = Column(Text, nullable=True)
+    code_question = Column(Text, nullable=True)
+    # answer_type = Column(Enum("understand", "not_understand", name="answer_type_enum"), nullable=False)
     is_active = Column(Boolean, default=True)
     
     # Связь с темой
