@@ -113,8 +113,7 @@ learning.html
   "topic_id": 1
 },
 ]
-
-поменяй вывод http://127.0.0.1:8000/questions.html?topic_id=1&module_id=1&grade_id=1&profession_id=1 с учетом новых структуры данных в таблице theory
+измени http://127.0.0.1:8000/questions.html?topic_id=1&module_id=1&grade_id=1&profession_id=1 с учетом новых структуры данных в таблице theory
 
 "title": "Тип int – целые числа",
   "description": "Целые числа — это числа без дробной части",
@@ -131,3 +130,30 @@ learning.html
   ], 
   "topic_id": 1
 
+  нужно убрать всплывающий alert на http://127.0.0.1:8000/questions.html?topic_id=1&module_id=1&grade_id=1&profession_id=1 при клике на ответы
+
+
+Придумай 10 вопросов на тему именования переменных в питоне.
+ответ дай в формате
+[ 
+  {
+"title": "Тип int – целые числа",
+  "description": "Целые числа — это числа без дробной части",
+  "code_question": "a = 5\nb = -10\nc = 0",
+  "text_question": "Какое из следующих значений является значением типа int в Python?",
+  "variants": {
+    "А": "42",
+    "Б": "3.14",
+    "В": 42,
+    "Г": "True"
+  },
+  "answer": [
+    "В"
+  ], 
+  "topic_id": 2
+  },
+]
+
+
+подсветка python кода с помощью prism не отображается на 
+http://127.0.0.1:8000/questions.html?topic_id=1&module_id=1&grade_id=1&profession_id=1 
