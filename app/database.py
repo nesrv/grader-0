@@ -91,6 +91,12 @@ class Topic(Base):
     # Relations
     module_id = Column(Integer, ForeignKey("modules.module_id"), nullable=False)
     module = relationship("Module", back_populates="topics")
+    
+    # Обратные связи для учебных материалов
+    theories = relationship("Theory", back_populates="topic", cascade="all, delete-orphan")
+    questions = relationship("Question", back_populates="topic", cascade="all, delete-orphan")
+    tasks = relationship("Task", back_populates="topic", cascade="all, delete-orphan")
+    cases = relationship("Case", back_populates="topic", cascade="all, delete-orphan")
 
 # Создаем таблицы
 Base.metadata.create_all(bind=engine)

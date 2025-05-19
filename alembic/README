@@ -1,0 +1,7 @@
+Generic single-database configuration with Alembic.
+
+Для создания миграции:
+python migrations.py create "описание_миграции"
+
+Для применения миграций:
+python migrations.py upgrade
