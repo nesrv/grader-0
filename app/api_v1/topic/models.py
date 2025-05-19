@@ -11,7 +11,9 @@ class Theory(Base):
     title = Column(String(255), nullable=False)
     description = Column(Text, nullable=True)
     code_question = Column(Text, nullable=True)
-    # answer_type = Column(Enum("understand", "not_understand", name="answer_type_enum"), nullable=False)
+    text_question = Column(Text, nullable=True)  # Текст вопроса
+    variants = Column(JSON, nullable=True)  # Варианты ответов в JSON
+    answer = Column(JSON, nullable=True)  # Список правильных ответов
     is_active = Column(Boolean, default=True)
     
     # Связь с темой

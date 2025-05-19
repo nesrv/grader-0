@@ -44,7 +44,7 @@ def delete_topic(topic_id: int, db: Session = Depends(get_db)):
 
 
 # Маршруты для Theory
-@router.get("/topics/{topic_id}/theories/", response_model=List[schemas.Theory])
+@router.get("/topics/{topic_id}/theories/", response_model=List[schemas.TheoryResponse])
 def read_theories(topic_id: int, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     # Проверяем существование темы
     db_topic = service.get_topic(db, topic_id=topic_id)
@@ -54,7 +54,7 @@ def read_theories(topic_id: int, skip: int = 0, limit: int = 100, db: Session = 
     return theories
 
 
-@router.post("/topics/{topic_id}/theories/", response_model=schemas.Theory, status_code=status.HTTP_201_CREATED)
+@router.post("/topics/{topic_id}/theories/", response_model=schemas.TheoryResponse, status_code=status.HTTP_201_CREATED)
 def create_theory(topic_id: int, theory: schemas.TheoryBase, db: Session = Depends(get_db)):
     # Проверяем существование темы
     db_topic = service.get_topic(db, topic_id=topic_id)
@@ -66,7 +66,7 @@ def create_theory(topic_id: int, theory: schemas.TheoryBase, db: Session = Depen
     return service.create_theory(db=db, theory=theory_create)
 
 
-@router.get("/topics/{topic_id}/theories/{theory_id}", response_model=schemas.Theory)
+@router.get("/topics/{topic_id}/theories/{theory_id}", response_model=schemas.TheoryResponse)
 def read_theory(topic_id: int, theory_id: int, db: Session = Depends(get_db)):
     # Проверяем существование темы
     db_topic = service.get_topic(db, topic_id=topic_id)
@@ -79,7 +79,7 @@ def read_theory(topic_id: int, theory_id: int, db: Session = Depends(get_db)):
     return db_theory
 
 
-@router.put("/topics/{topic_id}/theories/{theory_id}", response_model=schemas.Theory)
+@router.put("/topics/{topic_id}/theories/{theory_id}", response_model=schemas.TheoryResponse)
 def update_theory(topic_id: int, theory_id: int, theory: schemas.TheoryUpdate, db: Session = Depends(get_db)):
     # Проверяем существование темы
     db_topic = service.get_topic(db, topic_id=topic_id)
@@ -113,7 +113,7 @@ def delete_theory(topic_id: int, theory_id: int, db: Session = Depends(get_db)):
     return None
 
 
-@router.post("/topics/{topic_id}/list_theories/", response_model=List[schemas.Theory], status_code=status.HTTP_201_CREATED)
+@router.post("/topics/{topic_id}/list_theories/", response_model=List[schemas.TheoryResponse], status_code=status.HTTP_201_CREATED)
 def create_theories_list(topic_id: int, theories: List[schemas.TheoryBase], db: Session = Depends(get_db)):
     # Проверяем существование темы
     db_topic = service.get_topic(db, topic_id=topic_id)

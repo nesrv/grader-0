@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Any, Dict, Union
 from pydantic import BaseModel
 
 
@@ -6,6 +6,9 @@ class TheoryBase(BaseModel):
     title: str
     description: Optional[str] = None
     code_question: Optional[str] = None
+    text_question: Optional[str] = None
+    variants: Optional[Dict[str, Any]] = None
+    answer: Optional[List[str]] = None
     is_active: bool = True
 
 
@@ -17,8 +20,14 @@ class TheoryUpdate(TheoryBase):
     pass
 
 
-class Theory(TheoryBase):
+class TheoryResponse(BaseModel):
     theory_id: int
+    title: str
+    description: Optional[str] = None
+    code_question: Optional[str] = None
+    text_question: Optional[str] = None
+    variants: Optional[Dict[str, Any]] = None
+    answer: Optional[List[str]] = None
     topic_id: int
 
     class Config:
@@ -42,7 +51,7 @@ class TopicUpdate(TopicBase):
 class Topic(TopicBase):
     topic_id: int
     module_id: int
-    theories: List[Theory] = []
+    theories: List[TheoryResponse] = []
 
     class Config:
         orm_mode = True

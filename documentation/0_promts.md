@@ -73,3 +73,61 @@ learning.html
 
 хочу на http://127.0.0.1:8000/questions.html?topic_id=1&module_id=1&grade_id=1&profession_id=1 
 отображение поля c кодом из таблицы theory (code_question) сделать с разноцветной подсветкой синтаксиса Python-кода
+
+
+```
+переделай таблицу theory для хранения таких данных:
+
+ "title": "Тип int – целые числа",
+  "description": "Целые числа — это числа без дробной части",
+  "code_question": "a = 5\nb = -10\nc = 0",  
+  "text_question":"Какое из следующих значений является значением типа int в Python?"
+  "variants": {
+"А" : "42",
+"Б" : "3.14",
+"В" : 42,
+"Г" : "True",
+},
+  "answer" : ["B"]
+
+```
+
+
+убери из /api/v1/topics/topics/{topic_id}/theories/ "is_active": true
+по умолчанию будет это поле true
+[
+{
+"title": "Тип int – целые числа",
+  "description": "Целые числа — это числа без дробной части",
+  "code_question": "a = 5\nb = -10\nc = 0",
+  "text_question": "Какое из следующих значений является значением типа int в Python?",
+  "variants": {
+    "А": "42",
+    "Б": "3.14",
+    "В": 42,
+    "Г": "True"
+  },
+  "answer": [
+    "В"
+  ], 
+  "topic_id": 1
+},
+]
+
+поменяй вывод http://127.0.0.1:8000/questions.html?topic_id=1&module_id=1&grade_id=1&profession_id=1 с учетом новых структуры данных в таблице theory
+
+"title": "Тип int – целые числа",
+  "description": "Целые числа — это числа без дробной части",
+  "code_question": "a = 5\nb = -10\nc = 0",
+  "text_question": "Какое из следующих значений является значением типа int в Python?",
+  "variants": {
+    "А": "42",
+    "Б": "3.14",
+    "В": 42,
+    "Г": "True"
+  },
+  "answer": [
+    "В"
+  ], 
+  "topic_id": 1
+
